@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenStreetMap</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 800px;
+        }
+        .custom-button {
+            background-size: cover;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: none;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            animation: pulse 1.5s infinite;
+            background-color: transparent;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+            50% { box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); }
+            100% { box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+    var map = L.map('map', {
+    dragging: false
+    }).setView([-31.776, -52.3594], 17);
+    map.setZoom(17);
+    map.touchZoom.disable();
+    map.scrollWheelZoom.disable();
+    map.doubleClickZoom.disable();
+     function setDraggingState(enabled) {
+            if (enabled) {
+                map.dragging.enable();
+            } else {
+                map.dragging.disable();
+            }
+        }
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var customIcon1 = L.divIcon({
+        className: 'custom-button',
+        iconSize: [100, 60],
+        iconAnchor: [20, 20],
+        html: '<div style="background-image: url(\'https://iili.io/dqUauDv.png\'); background-size: cover; width: 100px; height: 60px;" onclick="updateVariable(\'item1\', \'true\')"></div>'
+    });
+
+    var customIcon2 = L.divIcon({
+        className: 'custom-button',
+        iconSize: [60, 60],
+        iconAnchor: [20, 20],
+        html: '<div style="background-image: url(\'https://static.wikia.nocookie.net/gensin-impact/images/8/80/Genshin_Impact.png\'); background-size: cover; width: 60px; height: 60px;" onclick="updateVariable(\'item2\', \'true\')"></div>'
+    });
+
+    var customIcon3 = L.divIcon({
+        className: 'custom-button',
+        iconSize: [100, 60],
+        iconAnchor: [20, 20],
+        html: '<div style="background-image: url(\'https://www.pngmart.com/files/10/Red-Mini-Cooper-PNG-HD.png\'); background-size: cover; width: 100px; height: 60px;" onclick="updateVariable(\'item3\', \'true\')"></div>'
+    });
+      var customIcon4 = L.divIcon({
+        className: 'custom-button',
+        iconSize: [60, 100],
+        iconAnchor: [20, 20],
+        html: '<div style="background-image: url(\'https://iili.io/dRdLbse.png\'); background-size: cover; width: 60px; height: 100px;" onclick="updateVariable(\'item4\', \'true\')"></div>'
+    });
+     var customIcon5 = L.divIcon({
+        className: 'custom-button',
+        iconSize: [80, 80],
+        iconAnchor: [20, 20],
+        html: '<div style="background-image: url(\'https://static.wikia.nocookie.net/eldenring/images/8/8c/ER_Icon_weapon_Dark_Moon_Greatsword.png/revision/latest?cb=20220411004114\'); background-size: cover; width: 80px; height: 80px;" onclick="updateVariable(\'item5\', \'true\')"></div>'
+    });
+ var customIcon6 = L.divIcon({
+        className: 'custom-button',
+        iconSize: [80, 80],
+        iconAnchor: [20, 20],
+        html: '<div style="background-image: url(\'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/aacb60fa-8d54-4b7f-b017-335ae8589aa9/dgjsxpg-7cc14e6a-aedf-4e10-b00a-dde1fb21c85d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2FhY2I2MGZhLThkNTQtNGI3Zi1iMDE3LTMzNWFlODU4OWFhOVwvZGdqc3hwZy03Y2MxNGU2YS1hZWRmLTRlMTAtYjAwYS1kZGUxZmIyMWM4NWQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.s3WCVWsoPP-HQHHrvm-0-zFVmGjbe02cIW4wU2CKi6w\'); background-size: cover; width: 80px; height: 80px;" onclick="updateVariable(\'item6\', \'true\')"></div>'
+    });
+ var customIcon7 = L.divIcon({
+        className: 'custom-button',
+        iconSize: [80, 80],
+        iconAnchor: [20, 20],
+        html: '<div style="background-image: url(\'https://www.lifemed.com.br/manager/upload/produtos/91c947-imagem.png\'); background-size: cover; width: 80px; height: 80px;" onclick="updateVariable(\'item7\', \'true\')"></div>'
+    });
+
+    var markerLatLng1 = [-31.7665859, -52.3527074];
+    var markerLatLng2 = [-31.7267366, -52.3328996];
+    var markerLatLng3 = [-31.770016, -52.34085999];
+    var markerLatLng4 = [-31.7551514,-52.3696299];
+    var markerLatLng5 = [-31.7564114,-52.3208199];
+    var markerLatLng6 = [-31.762072, -52.319531];
+    var markerLatLng7 = [-31.731503, -52.386844];
+
+    L.marker(markerLatLng1, { icon: customIcon1 })
+        .addTo(map)
+        .bindPopup('Teclado que partiu o tempo')
+        .on('click', function() {
+            updateVariable('item1', 'true');
+        });
+
+    L.marker(markerLatLng2, { icon: customIcon2 })
+        .addTo(map)
+        .bindPopup('Jogo de anime com qualidade questionável')
+        .on('click', function() {
+            updateVariable('item2', 'true');
+        });
+
+    L.marker(markerLatLng3, { icon: customIcon3 })
+        .addTo(map)
+        .bindPopup('O Lendário Cristianmóvel!')
+        .on('click', function() {
+            updateVariable('item3', 'true');
+        });
+L.marker(markerLatLng4, { icon: customIcon4 })
+        .addTo(map)
+        .bindPopup('F no chat')
+        .on('click', function() {
+            updateVariable('item4', 'true');
+        });
+        L.marker(markerLatLng5, { icon: customIcon5 })
+        .addTo(map)
+        .bindPopup('Espada genérica +10')
+        .on('click', function() {
+            updateVariable('item5', 'true');
+        });
+         L.marker(markerLatLng6, { icon: customIcon6 })
+        .addTo(map)
+        .bindPopup('Vitão GEMAPLYS')
+        .on('click', function() {
+            updateVariable('item6', 'true');
+        });
+        L.marker(markerLatLng7, { icon: customIcon7 })
+        .addTo(map)
+        .bindPopup('Endolav')
+        .on('click', function() {
+            updateVariable('item7', 'true');
+        });
+    function moveMapTo(latitude, longitude) {
+        map.setView([latitude, longitude], 17);
+    }
+
+    function updateVariable(variable, value) {
+        console.log("updateVariable called with variable:", variable, "and value:", value);
+        if (window.Android) {
+            window.Android.updateVariable(variable, value);
+        } else {
+            console.log("Android interface not found");
+        }
+    }
+</script>
+</body>
+</html>
